@@ -44,7 +44,7 @@ if __name__ == '__main__':
         threads[i].join()
 
     sender = '15026905296@139.com'
-    password = 'qn123456'
+    password = '*******'
     receivers = '825817056@qq.com'
 
     msg = MIMEMultipart()
