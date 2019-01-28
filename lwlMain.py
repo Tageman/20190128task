@@ -1,13 +1,24 @@
 # -*- coding:utf-8 -*-
 
+"""
+:Copyright Ren
+:author Ren (ren.xiaogang@infoloop.co)
+:date 2019/1/28
+"""
+
+import os,sys
 import json
 import smtplib
 import threading
-import xlrd
 import time
 from common.api_method import *
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+try:
+    import xlrd
+except:
+    os.system("pip install -U xlrd")
+    import xlrd
 
 
 def read_excel(line_num):
@@ -44,13 +55,13 @@ if __name__ == '__main__':
         threads[i].join()
 
     sender = '15026905296@139.com'
-    password = '*******'
+    password = '********'
     receivers = '825817056@qq.com'
 
     msg = MIMEMultipart()
     msg['From'] = sender
     msg['To'] = receivers
-    msg['Subject'] = 'API_Test_Result'
+    msg['Subject'] = 'Api_Test_Result'
 
     msg.attach(MIMEText('当前接口测试结果（结果全部显示在附件中）', 'plain', 'utf-8'))
     att1 = MIMEText(open(".\\result\\result-{0}.txt".format(time.strftime("%Y-%m-%d", time.localtime())), 'rb').read(),
